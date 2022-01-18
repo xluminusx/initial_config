@@ -9,13 +9,12 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Pedro Coelho"]
   spec.email         = ["pedro.coelho@sefin.ro.gov.br"]
 
-  spec.summary       = "TODO: Write a short summary, because RubyGems requires one."
-  spec.description   = "TODO: Write a longer description or delete this line."
+  spec.summary       = "Write a short summary, because RubyGems requires one."
+  spec.description   = "Write a longer description or delete this line."
   spec.homepage      = "https://github.com/xluminusx/initial_config"
   spec.required_ruby_version = ">= 2.4.0"
 
   spec.metadata      = {
-    "allowed_push_host" => "TODO: Set to 'https://mygemserver.com'",
     "homepage_uri"      => spec.homepage,
     "source_code_uri"   => spec.homepage
     # "changelog_uri"     => "TODO: Put your gem's CHANGELOG.md URL here."
