@@ -1,2 +1,2 @@
-class InitialConfig < ApplicationRecord
+class Dado < ApplicationRecord
 end

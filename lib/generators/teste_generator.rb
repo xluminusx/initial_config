@@ -42,11 +42,11 @@ class TestGenerator < Rails::Generators::NamedBase
       template  'assets/application.rb', 'app/assets/stylesheets/application.css', force: true
       copy_file 'gem/gemfile', 'Gemfile', force: true
       copy_file 'devise/layout.html.erb', 'app/views/layouts/devise.html.erb', force: true
-      template  'mvc/migrate.rb'        , "db/migrate/#{m}initial_config.rb"       , force: true
-      template  'mvc/model.rb'          , 'app/models/initial_config.rb'           , force: true
-      template  'mvc/controller.rb'     , 'app/controllers/initial_config_controller.rb', force: true
+      template  'mvc/migrate.rb'        , "db/migrate/#{m}dados.rb"       , force: true
+      template  'mvc/model.rb'          , 'app/models/dado.rb'           , force: true
+      template  'mvc/controller.rb'     , 'app/controllers/dados_controller.rb', force: true
       copy_file 'mvc/view.rb'           , 'app/views/initial_config/index.html.erb'     , force: true
-      route 'resources :initial_config'
+      route 'resources :dados'
     elsif params['uninstall'] == "full"
       remove_file 'lib/generators/Teste.css'
       remove_file 'lib/generators/Gemfile'

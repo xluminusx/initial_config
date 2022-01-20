@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @testis.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @testis.last_name %>
+</p>
+
+<p>
+  <strong>Nickname:</strong>
+  <%= @testis.nickname %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @testis.email %>
+</p>
+
+<p>
+  <strong>Unico:</strong>
+  <%= @testis.unico %>
+</p>
+
+<%= link_to 'Edit', edit_testis_path(@testis) %> |
+<%= link_to 'Back', testes_path %>
