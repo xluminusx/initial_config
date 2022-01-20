@@ -17,6 +17,7 @@ gem 'rails-i18n', '7.0.1' # Centralization of locale data collection for Ruby on
 gem 'simple_form', '5.1.0' # Simple Form aims to be as flexible as possible while helping you with powerful components to create your forms.
 gem 'kaminari', '1.2.2' # A Scope & Engine based, clean, powerful, customizable and sophisticated paginator. Read more: https://github.com/kaminari/kaminari
 gem 'ransack' # Ransack enables the creation of both simple and advanced search. Read more: https://github.com/activerecord-hackery/ransack
+
 gem 'initial_config', git: 'https://github.com/xluminusx/initial_config.git', branch: 'desenv'
 
 group :development, :test do
