@@ -1,0 +1,2 @@
+class InitialConfigController < ApplicationController
+end
