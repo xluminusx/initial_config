@@ -1,5 +1,5 @@
 class TesteGenerator < Rails::Generators::Base
-  source_root File.expand_path('templates', __FILE__)
+  source_root File.expand_path('templates', __dir__)
   class_option :scope, type: :string, default: 'read_products'
   argument :params, :type => :hash, :default => {}
 
