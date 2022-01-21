@@ -5,6 +5,8 @@ class TestGenerator < Rails::Generators::NamedBase
 
   def exe
     yarn_camp
+    gem_camp
+    arquivo_camp
   end
 
   private
@@ -33,20 +35,46 @@ class TestGenerator < Rails::Generators::NamedBase
     puts "================================================================="
   end
 
+  def gem_camp
+    puts ''
+    puts "============================= GEMS ============================="
+    puts "================================================================"
+    if params['install'] == "full"
+      show_spinner("installing Simple form... ") {%x(gem install simple_form)}
+      show_spinner("installing Devise...      ") {%x(gem install devise)}
+      show_spinner("installing rails-i18n...  ") {%x(gem install rails-i18n)}
+      show_spinner("installing kaminari...    ") {%x(gem install kaminari)}
+      show_spinner("installing Ransack...     ") {%x(gem install ransack)}
+    elsif @action == "d"
+
+    end
+    puts "================================================================"
+  end
+
   def arquivo_camp
     puts ''
     puts "=========================== ARCHIVES ==========================="
     puts "================================================================"
     if params['install'] == "full"
       m = '20220120122130_create_'
-      template  'assets/application.rb', 'app/assets/stylesheets/application.css', force: true
-      copy_file 'gem/gemfile', 'Gemfile', force: true
-      copy_file 'devise/layout.html.erb', 'app/views/layouts/devise.html.erb', force: true
-      template  'mvc/migrate.rb'        , "db/migrate/#{m}dados.rb"       , force: true
-      template  'mvc/model.rb'          , 'app/models/dado.rb'           , force: true
-      template  'mvc/controller.rb'     , 'app/controllers/dados_controller.rb', force: true
-      copy_file 'mvc/view.rb'           , 'app/views/initial_config/index.html.erb'     , force: true
-      route 'resources :dados'
+      template  'assets/application.rb' , 'app/assets/stylesheets/application.css' , force: true
+      copy_file 'gem/gemfile'           , 'Gemfile'                                , force: true
+      copy_file 'devise/layout.html.erb', 'app/views/layouts/devise.html.erb'      , force: true
+      
+      template  'mvc/migrate.rb'        , "db/migrate/#{m}dados.rb"                , force: true
+      template  'mvc/model.rb'          , 'app/models/dado.rb'                     , force: true
+      template  'mvc/controller.rb'     , 'app/controllers/dados_controller.rb'    , force: true
+      copy_file 'mvc/view.rb'           , 'app/views/initial_config/index.html.erb', force: true
+      route     'resources :dados'
+
+      copy_file 'kaminari/first.rb'     , 'app/views/kaminari/_first_page.html.erb', force: true 
+      copy_file 'kaminari/gab.rb'       , 'app/views/kaminari/_gab.html.erb'       , force: true
+      copy_file 'kaminari/last.rb'      , 'app/views/kaminari/_last_page.html.erb' , force: true
+      copy_file 'kaminari/next.rb'      , 'app/views/kaminari/_next_page.html.erb' , force: true
+      copy_file 'kaminari/page.rb'      , 'app/views/kaminari/_page.html.erb'      , force: true
+      copy_file 'kaminari/paginador.rb' , 'app/views/kaminari/_paginator.html.erb' , force: true
+      copy_file 'kaminari/prev.rb'      , 'app/views/kaminari/_prev_page.html.erb' , force: true
+
     elsif params['uninstall'] == "full"
       remove_file 'lib/generators/Teste.css'
       remove_file 'lib/generators/Gemfile'

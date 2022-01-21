@@ -13,7 +13,7 @@ class DadosController < ApplicationController
     until count > qtd.to_i do
     
       tabela.constantize.create!(id: count,
-                                 nome: nomes_arr[Random.rand(nomes_arr.length - 1)],
+                                 first_name: nomes_arr[Random.rand(nomes_arr.length - 1)],
                                  valor: Random.rand(0...1000), 
                                  coluna1: (Dados.nomes[:lados][Random.rand(Dados.nomes[:lados].length - 1)]), 
                                  coluna2: nil,
