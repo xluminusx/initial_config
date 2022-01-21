@@ -15,7 +15,7 @@ class TestGenerator < Rails::Generators::NamedBase
     puts ''
     puts "========================= YARN PACKAGES ========================="
     puts "================================================================="
-    if @action == "i"
+    if params['install'] == "full"
       show_spinner("installing popperJs... ") {%x(yarn add popper.js@1.16.1)}
       show_spinner("installing acorn...    ") {%x(yarn add acorn@8.7.0)}
       show_spinner("installing jquery...   ") {%x(yarn add jquery@3.6.0)}
