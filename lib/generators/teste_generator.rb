@@ -4,9 +4,10 @@ class TesteGenerator < Rails::Generators::Base
   argument :params, :type => :hash, :default => {}
 
   def exe
-    yarn_camp
-    gem_camp
-    arquivo_camp
+    puts "=============================================================="
+    # yarn_camp
+    # gem_camp
+    # arquivo_camp
   end
 
   private
