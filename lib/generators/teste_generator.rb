@@ -6,6 +6,11 @@ class TesteGenerator < Rails::Generators::Base
   def init
   end
 
+  def exec
+    yarn_camp
+    arquivo_camp
+    gem_camp
+  end
   private
 
   def yarn_camp
