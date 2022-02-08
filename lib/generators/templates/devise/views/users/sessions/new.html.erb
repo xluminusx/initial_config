@@ -1,0 +1,78 @@
+<div class="login-box">
+  <!-- /.login-logo -->
+  <div class="card card-outline card-primary">
+    <div class="card-header text-center">
+      <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
+    </div>
+    <div class="card-body">
+      <p class="login-box-msg">Sign in to start your session</p>
+
+      <% flash.each do |key, value| %>
+        
+        <div class="alert alert-danger" role="alert">
+          <button class="close" type="button" data-dismiss="alert">×</button>
+          <i class='bi bi-exclamation-circle'></i> <%= value %>
+        </div>
+
+      <% end %>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="input-group mb-3">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control" %>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="bi bi-envelope-fill"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password", class: "form-control" %>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="bi bi-lock-fill"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-8">
+            <% if devise_mapping.rememberable? %>
+              <div class="field">
+                <%= f.check_box :remember_me, class: "rememberme" %>
+                <%= f.label :remember_me %>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="col-4">
+            <%= f.submit "Log in", class: "btn btn-primary btn-block" %>
+          </div>
+        </div>
+      <% end %>
+
+      <%
+=begin%>
+ <div class="social-auth-links text-center mt-2 mb-3">
+        <a href="#" class="btn btn-block btn-primary">
+          <i class="bi bi-facebook"></i> Sign in using Facebook
+        </a>
+        <a href="#" class="btn btn-block btn-danger">
+          <i class="bi bi-google"></i> Sign in using Google+
+        </a>
+      </div> 
+<%
+=end%>
+      <!-- /.social-auth-links -->
+
+      <p class="mb-1">
+        <%= render "users/shared/links" %>
+      </p>
+      
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+</div>
+<!-- /.login-box -->
+

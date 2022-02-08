@@ -12,13 +12,6 @@ gem 'jbuilder', '~> 2.7' # Build JSON APIs with ease. Read more: https://github.
 # gem 'redis', '~> 4.0' # Use Redis adapter to run Action Cable in production
 # gem 'image_processing', '~> 1.2' # Use Active Storage variant
 gem 'bootsnap', '>= 1.4.4', require: false # Reduces boot times through caching; required in config/boot.rb
-gem 'devise', '4.8.0' # Devise is a flexible authentication solution for Rails based on Warden. Read more: https://github.com/heartcombo/devise
-gem 'rails-i18n', '7.0.1' # Centralization of locale data collection for Ruby on Rails. Read more: https://github.com/svenfuchs/rails-i18n
-gem 'simple_form', '5.1.0' # Simple Form aims to be as flexible as possible while helping you with powerful components to create your forms.
-gem 'kaminari', '1.2.2' # A Scope & Engine based, clean, powerful, customizable and sophisticated paginator. Read more: https://github.com/kaminari/kaminari
-gem 'ransack' # Ransack enables the creation of both simple and advanced search. Read more: https://github.com/activerecord-hackery/ransack
-
-gem 'initial_config', git: 'https://github.com/xluminusx/initial_config.git', branch: 'desenv'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw] # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -35,3 +28,12 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Gems added by initial_config
+gem 'devise', '4.8.0' # Devise is a flexible authentication solution for Rails based on Warden. Read more: https://github.com/heartcombo/devise
+gem 'rails-i18n', '7.0.1' # Centralization of locale data collection for Ruby on Rails. Read more: https://github.com/svenfuchs/rails-i18n
+gem 'simple_form', '5.1.0' # Simple Form aims to be as flexible as possible while helping you with powerful components to create your forms.
+gem 'kaminari', '1.2.2' # A Scope & Engine based, clean, powerful, customizable and sophisticated paginator. Read more: https://github.com/kaminari/kaminari
+gem 'ransack' # Ransack enables the creation of both simple and advanced search. Read more: https://github.com/activerecord-hackery/ransack
+
+gem 'initial_config', git: 'https://github.com/xluminusx/initial_config.git'

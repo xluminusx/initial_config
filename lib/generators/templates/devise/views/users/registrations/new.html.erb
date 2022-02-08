@@ -1,0 +1,86 @@
+<div class="register-box">
+  <div class="card card-outline card-primary">
+    <div class="card-header text-center">
+      <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
+    </div>
+    <div class="card-body">
+      <p class="login-box-msg">Register a new membership</p>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "users/shared/error_messages", resource: resource %>
+
+        <div class="input-group mb-3">
+          <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: "Nickname", class: "form-control" %>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="bi bi-person-fill"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control" %>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="bi bi-envelope-fill"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password (8 characters minimum)", class: "form-control" %>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="bi bi-lock-fill"></span>
+            </div>
+          </div>
+        </div>          
+        
+        <div class="input-group mb-3">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Password confirmation", class: "form-control" %>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="bi bi-lock-fill"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-8">
+            <div class="icheck-primary">
+              <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+              <label for="agreeTerms">
+               I agree to the <a href="#">terms</a>
+              </label>
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-4">
+            <%= f.submit "Register", class: "btn btn-primary btn-block" %>
+          </div>
+          <!-- /.col -->
+        </div>
+        
+        
+      <% end %>
+      
+      <%
+=begin%>
+ <div class="social-auth-links text-center">
+        <a href="#" class="btn btn-block btn-primary">
+          <i class="bi bi-facebook"></i>
+          Sign up using Facebook
+        </a>
+        <a href="#" class="btn btn-block btn-danger">
+          <i class="bi bi-google"></i>
+          Sign up using Google+
+        </a>
+      </div> 
+<%
+=end%>
+
+      <%= render "users/shared/links" %>
+    </div>
+    <!-- /.form-box -->
+  </div><!-- /.card -->
+
+
