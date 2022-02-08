@@ -43,7 +43,7 @@ class TesteGenerator < Rails::Generators::Base
       copy_file 'mvc/view.rb'           , 'app/views/initial_config/index.html.erb', force: true
             
       copy_file 'kaminari/first.rb'     , 'app/views/kaminari/_first_page.html.erb', force: true 
-      copy_file 'kaminari/gab.rb'       , 'app/views/kaminari/_gab.html.erb'       , force: true
+      copy_file 'kaminari/gap.rb'       , 'app/views/kaminari/_gap.html.erb'       , force: true
       copy_file 'kaminari/last.rb'      , 'app/views/kaminari/_last_page.html.erb' , force: true
       copy_file 'kaminari/next.rb'      , 'app/views/kaminari/_next_page.html.erb' , force: true
       copy_file 'kaminari/page.rb'      , 'app/views/kaminari/_page.html.erb'      , force: true
