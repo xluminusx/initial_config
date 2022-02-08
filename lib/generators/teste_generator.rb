@@ -31,7 +31,6 @@ class TesteGenerator < Rails::Generators::Base
     puts ''
     puts "=========================== ARCHIVES ==========================="
     puts "================================================================"
-    if params['install'] == "full"
       m = '20220208110938_create_'
       template  'assets/application.css', 'app/assets/stylesheets/application.css' , force: true
       copy_file 'assets/adminlte.css'   , 'vendor/assets/stylesheets/adminlte.css'
@@ -72,11 +71,6 @@ class TesteGenerator < Rails::Generators::Base
 
       copy_file 'routes.rb', 'config/routes.rb', force: true
             
-    elsif params['uninstall'] == "full"
-      remove_file 'lib/generators/Teste.css'
-      remove_file 'lib/generators/Gemfile'
-      remove_file 'lib/generators/devise.html.erb'
-    end
     puts "================================================================"
   end
   
