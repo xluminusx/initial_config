@@ -46,7 +46,7 @@ class TesteGenerator < Rails::Generators::Base
       copy_file 'kaminari/paginador.rb' , 'app/views/kaminari/_paginator.html.erb' , force: true
       copy_file 'kaminari/prev.rb'      , 'app/views/kaminari/_prev_page.html.erb' , force: true
 
-      copy_file 'devise/migrate.rb'         , "db/migrate/#{(m[0..13].to_i + 1).to_s)}_devise_create_users.rb"
+      copy_file 'devise/migrate.rb'         , "db/migrate/#{(m[0..13].to_i + 1).to_s}_devise_create_users.rb"
       copy_file 'devise/model_user.rb'      , 'app/models/user.rb'
       copy_file 'devise/users_controller.rb', 'app/controllers/users_controller.rb'
       copy_file 'devise/layout.html.erb'    , 'app/views/layouts/devise.html.erb'
