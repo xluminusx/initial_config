@@ -29,7 +29,7 @@ class TesteGenerator < Rails::Generators::Base
 
   def teste
     copy_file 'gem/gemfile', 'Gemfile', force: true
-    return '=========TESTE==============='
+    
   end
 
   def gem_camp
