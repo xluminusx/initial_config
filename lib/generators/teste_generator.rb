@@ -9,6 +9,7 @@ class TesteGenerator < Rails::Generators::Base
   def exec
     yarn_camp
     gem_camp
+    devise_camp
     arquivo_camp
   end
   private
