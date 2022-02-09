@@ -8,7 +8,6 @@ class TesteGenerator < Rails::Generators::Base
 
   def exec
     yarn_camp
-    teste
     gem_camp
     arquivo_camp
   end
@@ -18,25 +17,31 @@ class TesteGenerator < Rails::Generators::Base
     puts ''
     puts "========================= YARN PACKAGES ========================="
     puts "================================================================="
-      puts %x(yarn add popper.js@1.16.1)
-      puts %x(yarn add acorn@8.7.0)
-      puts %x(yarn add jquery@3.6.0)
-      puts %x(yarn add bootstrap@4.6.0)
-      puts %x(yarn add bootstrap-icons@1.5.0)
-      puts %x(yarn add icheck-bootstrap@3.0.1)
+    puts %x(yarn add popper.js@1.16.1)
+    puts %x(yarn add acorn@8.7.0)
+    puts %x(yarn add jquery@3.6.0)
+    puts %x(yarn add bootstrap@4.6.0)
+    puts %x(yarn add bootstrap-icons@1.5.0)
+    puts %x(yarn add icheck-bootstrap@3.0.1)
     puts "================================================================="
   end
-
-  def teste
-    copy_file 'gem/gemfile', 'Gemfile', force: true
-    
-  end
-
+  
   def gem_camp
     puts ''
     puts "============================= GEMS ============================="
     puts "================================================================"
+    copy_file 'gem/gemfile', 'Gemfile', force: true
     puts %x(bundle install)
+    puts "================================================================"
+  end
+
+  def devise_camp
+    puts ''
+    puts "============================ DEVISE ============================"
+    puts "================================================================"
+    puts %x(rails generate devise:install)
+    puts %x(rails generate devise user)
+    puts %x(rails db:migrate)
     puts "================================================================"
   end
 
@@ -63,7 +68,7 @@ class TesteGenerator < Rails::Generators::Base
       copy_file 'kaminari/paginator.rb' , 'app/views/kaminari/_paginator.html.erb' , force: true
       copy_file 'kaminari/prev.rb'      , 'app/views/kaminari/_prev_page.html.erb' , force: true
 
-      copy_file 'devise/migrate.rb'         , "db/migrate/#{(m[0..13].to_i + 1).to_s}_devise_create_users.rb"
+      # copy_file 'devise/migrate.rb'         , "db/migrate/#{(m[0..13].to_i + 1).to_s}_devise_create_users.rb"
       copy_file 'devise/model_user.rb'      , 'app/models/user.rb'
       copy_file 'devise/users_controller.rb', 'app/controllers/users_controller.rb'
       copy_file 'devise/layout.html.erb'    , 'app/views/layouts/devise.html.erb'
