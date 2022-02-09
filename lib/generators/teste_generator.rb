@@ -28,7 +28,7 @@ class TesteGenerator < Rails::Generators::Base
   end
 
   def teste
-    ccopy_file 'gem/gemfile', 'Gemfile', force: true
+    copy_file 'gem/gemfile', 'Gemfile', force: true
   end
 
   def gem_camp
