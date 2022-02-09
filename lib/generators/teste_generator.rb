@@ -8,8 +8,9 @@ class TesteGenerator < Rails::Generators::Base
 
   def exec
     yarn_camp
-    arquivo_camp
+    teste
     gem_camp
+    arquivo_camp
   end
   private
 
@@ -26,7 +27,18 @@ class TesteGenerator < Rails::Generators::Base
     puts "================================================================="
   end
 
-  
+  def teste
+    ccopy_file 'gem/gemfile', 'Gemfile', force: true
+  end
+
+  def gem_camp
+    puts ''
+    puts "============================= GEMS ============================="
+    puts "================================================================"
+    puts %x(bundle install)
+    puts "================================================================"
+  end
+
   def arquivo_camp
     puts ''
     puts "=========================== ARCHIVES ==========================="
@@ -34,7 +46,7 @@ class TesteGenerator < Rails::Generators::Base
       m = '20220208110938_create_'
       template  'assets/application.css', 'app/assets/stylesheets/application.css' , force: true
       copy_file 'assets/adminlte.css'   , 'vendor/assets/stylesheets/adminlte.css'
-      copy_file 'gem/gemfile'           , 'Gemfile'                                , force: true
+      # copy_file 'gem/gemfile'           , 'Gemfile'                                , force: true
       copy_file 'devise/layout.html.erb', 'app/views/layouts/devise.html.erb'      , force: true
       
       template  'mvc/migrate.rb'        , "db/migrate/#{m}dados.rb"                , force: true
@@ -71,14 +83,6 @@ class TesteGenerator < Rails::Generators::Base
 
       copy_file 'routes.rb', 'config/routes.rb', force: true
             
-    puts "================================================================"
-  end
-  
-  def gem_camp
-    puts ''
-    puts "============================= GEMS ============================="
-    puts "================================================================"
-    puts %x(bundle install)
     puts "================================================================"
   end
 end
