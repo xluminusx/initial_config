@@ -70,13 +70,15 @@ class TesteGenerator < Rails::Generators::Base
       copy_file 'kaminari/prev.rb'      , 'app/views/kaminari/_prev_page.html.erb' , force: true
 
       # copy_file 'devise/migrate.rb'         , "db/migrate/#{(m[0..13].to_i + 1).to_s}_devise_create_users.rb"
-      copy_file 'devise/model_user.rb'      , 'app/models/user.rb'
-      copy_file 'devise/users_controller.rb', 'app/controllers/users_controller.rb'
-      copy_file 'devise/layout.html.erb'    , 'app/views/layouts/devise.html.erb'
-      copy_file 'devise/views/users/confirmations/new.html.erb', 'app/views/users/confirmations/new.html.erb'
-      copy_file 'devise/views/users/mailer/confirmation_instructions.html.erb', 'app/views/users/mailer/confirmation_instructions.html.erb'
-      copy_file 'devise/views/users/mailer/email_changed.html.erb', 'app/views/users/mailer/email_changed.html.erb'
-      copy_file 'devise/views/users/mailer/password_change.html.erb', 'app/views/users/mailer/password_change.html.erb'
+      # copy_file 'devise/model_user.rb'                                          , 'app/models/user.rb'
+      copy_file 'devise/devise.js', 'app/javascript/packs/devise.js'
+      copy_file 'devise/config_devise.rb', 'config/initializers/devise.rb'
+      copy_file 'devise/users_controller.rb'                                    , 'app/controllers/users_controller.rb'
+      copy_file 'devise/layout.html.erb'                                        , 'app/views/layouts/devise.html.erb'
+      copy_file 'devise/views/users/confirmations/new.html.erb'                 , 'app/views/users/confirmations/new.html.erb'
+      copy_file 'devise/views/users/mailer/confirmation_instructions.html.erb'  , 'app/views/users/mailer/confirmation_instructions.html.erb'
+      copy_file 'devise/views/users/mailer/email_changed.html.erb'              , 'app/views/users/mailer/email_changed.html.erb'
+      copy_file 'devise/views/users/mailer/password_change.html.erb'            , 'app/views/users/mailer/password_change.html.erb'
       copy_file 'devise/views/users/mailer/reset_password_instructions.html.erb', 'app/views/users/mailer/reset_password_instructions.html.erb'
       copy_file 'devise/views/users/mailer/unlock_instructions.html.erb', 'app/views/users/mailer/unlock_instructions.html.erb'
       copy_file 'devise/views/users/passwords/edit.html.erb', 'app/views/users/passwords/edit.html.erb'
