@@ -54,6 +54,7 @@ class TesteGenerator < Rails::Generators::Base
       template  'assets/application.css', 'app/assets/stylesheets/application.css' , force: true
       copy_file 'assets/application.js', 'app/javascript/packs/application.js', force: true
       copy_file 'assets/adminlte.css'   , 'vendor/assets/stylesheets/adminlte.css'
+      copy_file 'lib/generators/templates/webpack/environment.js', 'config/webpack/environment.js', force: true
       # copy_file 'gem/gemfile'           , 'Gemfile'                                , force: true
       copy_file 'devise/layout.html.erb', 'app/views/layouts/devise.html.erb'      , force: true
       
@@ -73,9 +74,9 @@ class TesteGenerator < Rails::Generators::Base
       # copy_file 'devise/migrate.rb'         , "db/migrate/#{(m[0..13].to_i + 1).to_s}_devise_create_users.rb"
       # copy_file 'devise/model_user.rb'                                          , 'app/models/user.rb'
       copy_file 'devise/devise.js', 'app/javascript/packs/devise.js'
-      copy_file 'devise/config_devise.rb', 'config/initializers/devise.rb'
+      copy_file 'devise/config_devise.rb', 'config/initializers/devise.rb', force: true
       copy_file 'devise/users_controller.rb'                                    , 'app/controllers/users_controller.rb'
-      copy_file 'devise/layout.html.erb'                                        , 'app/views/layouts/devise.html.erb'
+      # copy_file 'devise/layout.html.erb'                                        , 'app/views/layouts/devise.html.erb'
       copy_file 'devise/views/users/confirmations/new.html.erb'                 , 'app/views/users/confirmations/new.html.erb'
       copy_file 'devise/views/users/mailer/confirmation_instructions.html.erb'  , 'app/views/users/mailer/confirmation_instructions.html.erb'
       copy_file 'devise/views/users/mailer/email_changed.html.erb'              , 'app/views/users/mailer/email_changed.html.erb'
