@@ -52,6 +52,7 @@ class TesteGenerator < Rails::Generators::Base
     puts "================================================================"
       m = '20220208110938_create_'
       template  'assets/application.css', 'app/assets/stylesheets/application.css' , force: true
+      copy_file 'assets/application.js', 'app/javascript/packs/application.js', force: true
       copy_file 'assets/adminlte.css'   , 'vendor/assets/stylesheets/adminlte.css'
       # copy_file 'gem/gemfile'           , 'Gemfile'                                , force: true
       copy_file 'devise/layout.html.erb', 'app/views/layouts/devise.html.erb'      , force: true

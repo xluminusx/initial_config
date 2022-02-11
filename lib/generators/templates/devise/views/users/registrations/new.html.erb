@@ -9,15 +9,6 @@
         <%= render "users/shared/error_messages", resource: resource %>
 
         <div class="input-group mb-3">
-          <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: "Nickname", class: "form-control" %>
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="bi bi-person-fill"></span>
-            </div>
-          </div>
-        </div>
-
-        <div class="input-group mb-3">
           <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control" %>
           <div class="input-group-append">
             <div class="input-group-text">
