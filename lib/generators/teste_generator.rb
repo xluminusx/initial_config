@@ -9,11 +9,10 @@ class TesteGenerator < Rails::Generators::Base
   end
 
   def exec
-    `rake git:envio`
-    # yarn_camp
-    # gem_camp
-    # devise_camp
-    # arquivo_camp
+    yarn_camp
+    gem_camp
+    devise_camp
+    arquivo_camp
   end
   private
 
@@ -22,7 +21,7 @@ class TesteGenerator < Rails::Generators::Base
     puts "=========================== YARN PACKAGES ==========================="
     puts "====================================================================="
     @yarns.each do |y|
-      puts %x(yarn add #{y})
+      run "yarn add #{y}"
     end
     puts "====================================================================="
   end
@@ -32,7 +31,7 @@ class TesteGenerator < Rails::Generators::Base
     puts "=============================== GEMS ==============================="
     puts "===================================================================="
     copy_file 'gem/gemfile', 'Gemfile', force: true
-    puts %x(bundle install)
+    run 'bundle install'
     puts "===================================================================="
   end
 
@@ -40,8 +39,8 @@ class TesteGenerator < Rails::Generators::Base
     puts ''
     puts "============================== DEVISE =============================="
     puts "===================================================================="
-    puts %x(rails generate devise:install)
-    puts %x(rails generate devise user)
+    run 'rails generate devise:install'
+    run 'rails generate devise user'
     puts "===================================================================="
   end
 
@@ -56,6 +55,7 @@ class TesteGenerator < Rails::Generators::Base
       copy_file 'webpack/environment.js', 'config/webpack/environment.js', force: true
       copy_file 'assets/adminlte.js', 'vendor/assets/javascript/adminlte.js'
             
+      # puts %x(rails g model dado first_name last_name nickname email unico)
       template  'mvc/migrate.rb'        , "db/migrate/#{m}dados.rb"                , force: true
       template  'mvc/model.rb'          , 'app/models/dado.rb'                     , force: true
       template  'mvc/controller.rb'     , 'app/controllers/dados_controller.rb'    , force: true
@@ -86,7 +86,7 @@ class TesteGenerator < Rails::Generators::Base
 
       copy_file 'routes.rb', 'config/routes.rb', force: true
 
-      puts %x(rails db:migrate)
+      run 'rails db:migrate'
             
     puts "===================================================================="
   end
