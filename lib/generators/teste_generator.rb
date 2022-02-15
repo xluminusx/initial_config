@@ -15,15 +15,19 @@ class TesteGenerator < Rails::Generators::Base
   private
 
   def yarn_camp
+    yarns = ['popper.js@1.16.1', 'acorn@8.7.0', 'jquery@3.6.0', 'bootstrap@4.6.0', 'bootstrap-icons@1.5.0', 'icheck-bootstrap@3.0.1']
     puts ''
     puts "========================= YARN PACKAGES ========================="
     puts "================================================================="
-    puts %x(yarn add popper.js@1.16.1)
-    puts %x(yarn add acorn@8.7.0)
-    puts %x(yarn add jquery@3.6.0)
-    puts %x(yarn add bootstrap@4.6.0)
-    puts %x(yarn add bootstrap-icons@1.5.0)
-    puts %x(yarn add icheck-bootstrap@3.0.1)
+    yarns.each do |y|
+      puts %x(yarn add #{y})
+    end
+    # puts %x(yarn add popper.js@1.16.1)
+    # puts %x(yarn add acorn@8.7.0)
+    # puts %x(yarn add jquery@3.6.0)
+    # puts %x(yarn add bootstrap@4.6.0)
+    # puts %x(yarn add bootstrap-icons@1.5.0)
+    # puts %x(yarn add icheck-bootstrap@3.0.1)
     puts "================================================================="
   end
   
@@ -47,6 +51,7 @@ class TesteGenerator < Rails::Generators::Base
   end
 
   def arquivo_camp
+    kaminaris = ['first_page', 'gap', 'last_page', 'next_page', 'page', 'paginator', 'prev_page']
     puts ''
     puts "=========================== ARCHIVES ==========================="
     puts "================================================================"
@@ -56,28 +61,30 @@ class TesteGenerator < Rails::Generators::Base
       copy_file 'assets/adminlte.css'   , 'vendor/assets/stylesheets/adminlte.css'
       copy_file 'webpack/environment.js', 'config/webpack/environment.js', force: true
       copy_file 'assets/adminlte.js', 'vendor/assets/javascript/adminlte.js'
-      # copy_file 'gem/gemfile'           , 'Gemfile'                                , force: true
-      copy_file 'devise/layout.html.erb', 'app/views/layouts/devise.html.erb'      , force: true
-      
+            
       template  'mvc/migrate.rb'        , "db/migrate/#{m}dados.rb"                , force: true
       template  'mvc/model.rb'          , 'app/models/dado.rb'                     , force: true
       template  'mvc/controller.rb'     , 'app/controllers/dados_controller.rb'    , force: true
       copy_file 'mvc/view.rb'           , 'app/views/initial_config/index.html.erb', force: true
-            
-      copy_file 'kaminari/first.rb'     , 'app/views/kaminari/_first_page.html.erb', force: true 
-      copy_file 'kaminari/gap.rb'       , 'app/views/kaminari/_gap.html.erb'       , force: true
-      copy_file 'kaminari/last.rb'      , 'app/views/kaminari/_last_page.html.erb' , force: true
-      copy_file 'kaminari/next.rb'      , 'app/views/kaminari/_next_page.html.erb' , force: true
-      copy_file 'kaminari/page.rb'      , 'app/views/kaminari/_page.html.erb'      , force: true
-      copy_file 'kaminari/paginator.rb' , 'app/views/kaminari/_paginator.html.erb' , force: true
-      copy_file 'kaminari/prev.rb'      , 'app/views/kaminari/_prev_page.html.erb' , force: true
+      
+      kaminaris.each do |k|
+        copy_file "kaminari/_#{k}.html.erb", "app/views/kaminari/_#{k}.html.erb" , force: true
+      end
+
+      # copy_file 'kaminari/first.rb'     , 'app/views/kaminari/_first_page.html.erb', force: true 
+      # copy_file 'kaminari/gap.rb'       , 'app/views/kaminari/_gap.html.erb'       , force: true
+      # copy_file 'kaminari/last.rb'      , 'app/views/kaminari/_last_page.html.erb' , force: true
+      # copy_file 'kaminari/next.rb'      , 'app/views/kaminari/_next_page.html.erb' , force: true
+      # copy_file 'kaminari/page.rb'      , 'app/views/kaminari/_page.html.erb'      , force: true
+      # copy_file 'kaminari/paginator.rb' , 'app/views/kaminari/_paginator.html.erb' , force: true
+      # copy_file 'kaminari/prev.rb'      , 'app/views/kaminari/_prev_page.html.erb' , force: true
 
       # copy_file 'devise/migrate.rb'         , "db/migrate/#{(m[0..13].to_i + 1).to_s}_devise_create_users.rb"
       # copy_file 'devise/model_user.rb'                                          , 'app/models/user.rb'
       copy_file 'devise/devise.js', 'app/javascript/packs/devise.js'
       copy_file 'devise/config_devise.rb', 'config/initializers/devise.rb', force: true
       copy_file 'devise/users_controller.rb'                                    , 'app/controllers/users_controller.rb'
-      # copy_file 'devise/layout.html.erb'                                        , 'app/views/layouts/devise.html.erb'
+      copy_file 'devise/layout.html.erb'                                        , 'app/views/layouts/devise.html.erb'
       copy_file 'devise/views/users/confirmations/new.html.erb'                 , 'app/views/users/confirmations/new.html.erb'
       copy_file 'devise/views/users/mailer/confirmation_instructions.html.erb'  , 'app/views/users/mailer/confirmation_instructions.html.erb'
       copy_file 'devise/views/users/mailer/email_changed.html.erb'              , 'app/views/users/mailer/email_changed.html.erb'
