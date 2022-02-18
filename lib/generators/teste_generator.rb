@@ -4,8 +4,10 @@ class TesteGenerator < Rails::Generators::Base
   argument :params, :type => :hash, :default => {}
 
   def init
-    @yarns = ['popper.js@1.16.1', 'acorn@8.7.0', 'jquery@3.6.0', 'bootstrap@4.6.0', 'bootstrap-icons@1.5.0', 'icheck-bootstrap@3.0.1']
-    @kaminaris = ['first_page', 'gap', 'last_page', 'next_page', 'page', 'paginator', 'prev_page']
+    @yarns = ['popper.js@1.16.1', 'acorn@8.7.0', 'jquery@3.6.0', 
+              'bootstrap@4.6.0', 'bootstrap-icons@1.5.0', 'icheck-bootstrap@3.0.1']
+    @kaminaris = ['first_page', 'gap', 'last_page', 'next_page', 
+                  'page', 'paginator', 'prev_page']
   end
 
   def exec
@@ -20,9 +22,7 @@ class TesteGenerator < Rails::Generators::Base
     puts ''
     puts "=========================== YARN PACKAGES ==========================="
     puts "====================================================================="
-    @yarns.each do |y|
-      run "yarn add #{y}"
-    end
+    @yarns.map {|y| run "yarn add #{y}"}
     puts "====================================================================="
   end
   
@@ -61,9 +61,7 @@ class TesteGenerator < Rails::Generators::Base
       template  'mvc/controller.rb'     , 'app/controllers/dados_controller.rb'    , force: true
       copy_file 'mvc/view.rb'           , 'app/views/initial_config/index.html.erb', force: true
       
-      @kaminaris.each do |k|
-        copy_file "kaminari/_#{k}.html.erb", "app/views/kaminari/_#{k}.html.erb" , force: true
-      end
+      @kaminaris.map { |k| copy_file "kaminari/_#{k}.html.erb", "app/views/kaminari/_#{k}.html.erb"}
 
       copy_file 'devise/devise.js', 'app/javascript/packs/devise.js'
       copy_file 'devise/config_devise.rb', 'config/initializers/devise.rb', force: true
